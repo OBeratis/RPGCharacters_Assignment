@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "389bbd27-4ebc-433d-bade-a43946c2c140": {
+      "ProjectGuid": "389bbd27-4ebc-433d-bade-a43946c2c140",
+      "DisplayName": "RPGCharacters",
+      "ColorIndex": 0
+    },
+    "4d5178a8-1238-4150-936a-6379c26a71c8": {
+      "ProjectGuid": "4d5178a8-1238-4150-936a-6379c26a71c8",
+      "DisplayName": "RPGCharactersTests",
+      "ColorIndex": 1
+    },
+    "e89bf3cb-fdef-4237-aea5-db62ac95360d": {
+      "ProjectGuid": "e89bf3cb-fdef-4237-aea5-db62ac95360d",
+      "DisplayName": "RPGCharactersTests",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

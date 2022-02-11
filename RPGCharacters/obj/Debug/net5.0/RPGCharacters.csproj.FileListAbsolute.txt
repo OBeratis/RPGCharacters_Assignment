@@ -5,7 +5,6 @@ C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\bin\Debug\
 C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\bin\Debug\net5.0\RPGCharacters.dll
 C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\bin\Debug\net5.0\ref\RPGCharacters.dll
 C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\bin\Debug\net5.0\RPGCharacters.pdb
-C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\obj\Debug\net5.0\RPGCharacters.csproj.AssemblyReference.cache
 C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\obj\Debug\net5.0\RPGCharacters.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\obj\Debug\net5.0\RPGCharacters.AssemblyInfoInputs.cache
 C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\obj\Debug\net5.0\RPGCharacters.AssemblyInfo.cs
