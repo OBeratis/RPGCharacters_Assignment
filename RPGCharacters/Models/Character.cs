@@ -41,8 +41,40 @@ namespace RPGCharacters.Models
         public override CharacterClass ClassType { get => classType; set => classType = value; }
 
         // Overrided methods
-        public override void IncreaseLevel() { level++; }
+        public override void IncreaseLevel() { Level++; }
         public override void IncreasePrimaryAttributes() { basePrimaryAttributes++; }
+        public override void LevelUp()
+        {
+            switch (this.ClassType)
+            {
+                case CharacterClass.Mage:
+                    IncreaseLevel();
+                    PrimaryAttributes.Strength += 1;
+                    PrimaryAttributes.Dexterity += 1;
+                    PrimaryAttributes.Intelligence += 5;
+                    break;
+                case CharacterClass.Ranger:
+                    IncreaseLevel();
+                    PrimaryAttributes.Strength += 1;
+                    PrimaryAttributes.Dexterity += 5;
+                    PrimaryAttributes.Intelligence += 1;
+                    break;
+                case CharacterClass.Rogue:
+                    IncreaseLevel();
+                    PrimaryAttributes.Strength += 1;
+                    PrimaryAttributes.Dexterity += 4;
+                    PrimaryAttributes.Intelligence += 1;
+                    break;
+                case CharacterClass.Warrior:
+                    IncreaseLevel();
+                    PrimaryAttributes.Strength += 3;
+                    PrimaryAttributes.Dexterity += 2;
+                    PrimaryAttributes.Intelligence += 1;
+                    break;
+                default:
+                    break;
+            }
+        }
         public override void DisplayCharacterStatistics()
         {
             StringBuilder sb = new StringBuilder();
@@ -57,7 +89,6 @@ namespace RPGCharacters.Models
 
             Console.WriteLine(sb.ToString());
         }
-
         // Methods
         private void InitializePrimaryAttributes()
         {
@@ -123,7 +154,6 @@ namespace RPGCharacters.Models
 
             this.Equipment.Add(slot, armor);
         }
-
         public void CalculateAttributes()
         {
             switch(this.ClassType)
@@ -152,7 +182,6 @@ namespace RPGCharacters.Models
                     break;
             }
         }
-
         public void CalculateTotalAttribute()
         {
             foreach (var item in Equipment)

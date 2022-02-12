@@ -30,6 +30,7 @@ namespace RPGCharacters.Models
         // Methods
         public abstract void IncreaseLevel();
         public abstract void IncreasePrimaryAttributes();
+        public abstract void LevelUp();
         public abstract void DisplayCharacterStatistics();
     }
 
