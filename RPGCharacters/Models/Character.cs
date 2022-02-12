@@ -16,10 +16,10 @@ namespace RPGCharacters.Models
         private PrimaryAttributes primaryAttributes;
         private Dictionary<Slot, Item> equipment;
 
+        // Constructors
         public Character()
         {
         }
-
         public Character(CharacterClass classType)
         {
             this.ClassType = classType;
@@ -27,20 +27,18 @@ namespace RPGCharacters.Models
             InitializePrimaryAttributes();
         }
 
-        // Overrided properties
+        // Properties
         public override string Name { get => name; set => name = value; }
         public override int Level { get => level; set => level = value; }
         public override int BasePrimaryAttributes { get => basePrimaryAttributes; set => basePrimaryAttributes = value; }
         public override int TotalPrimaryAttributes { get => totalPrimaryAttributes; set => totalPrimaryAttributes = value; }
-
-        // Properties
         public int Damage { get => damage; set => damage = value; }
         public int AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
         public Dictionary<Slot, Item> Equipment { get => equipment; set => equipment = value; }
         public PrimaryAttributes PrimaryAttributes { get => primaryAttributes; set => primaryAttributes = value; }
         public override CharacterClass ClassType { get => classType; set => classType = value; }
 
-        // Overrided methods
+        // Methods
         public override void IncreaseLevel() { Level++; }
         public override void IncreasePrimaryAttributes() { basePrimaryAttributes++; }
         public override void LevelUp()
@@ -89,7 +87,6 @@ namespace RPGCharacters.Models
 
             Console.WriteLine(sb.ToString());
         }
-        // Methods
         private void InitializePrimaryAttributes()
         {
             PrimaryAttributes = new PrimaryAttributes();
