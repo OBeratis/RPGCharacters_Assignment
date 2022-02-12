@@ -43,15 +43,16 @@ namespace RPGCharacters
             //}
 
             Character mage = new Character(CharacterClass.Mage);
+            mage.DisplayCharacterStatistics();
             Character ranger = new Character(CharacterClass.Ranger);
+            ranger.DisplayCharacterStatistics();
             Character rogue = new Character(CharacterClass.Rogue);
+            rogue.DisplayCharacterStatistics();
             Character warrior = new Character(CharacterClass.Warrior);
+            warrior.DisplayCharacterStatistics();
 
             Console.WriteLine();
-            DisplayCharacterStatistics(mage);
-            DisplayCharacterStatistics(ranger);
-            DisplayCharacterStatistics(rogue);
-            DisplayCharacterStatistics(warrior);
+            
         }
 
         public static void TestWeaponException(bool throwException)
@@ -72,21 +73,6 @@ namespace RPGCharacters
             }
 
             throw new Exception();
-        }
-
-        public static void DisplayCharacterStatistics(Character character)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Character statistics");
-            sb.AppendLine("-----------------------");
-            sb.AppendLine($"Character name: {character.ClassType.ToString()}");
-            sb.AppendLine($"Character level: {character.Level}");
-            sb.AppendLine($"Strength: {character.PrimaryAttributes.Strength}");
-            sb.AppendLine($"Dexterity: {character.PrimaryAttributes.Dexterity}");
-            sb.AppendLine($"Intelligence: {character.PrimaryAttributes.Intelligence}");
-            sb.AppendLine($"Damage: {character.Damage}");
-
-            Console.WriteLine(sb.ToString());
         }
     }
 }

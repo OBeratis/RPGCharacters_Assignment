@@ -13,3 +13,4 @@ C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\obj\Debug\
 C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\obj\Debug\net5.0\ref\RPGCharacters.dll
 C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\obj\Debug\net5.0\RPGCharacters.pdb
 C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\obj\Debug\net5.0\RPGCharacters.genruntimeconfig.cache
+C:\Users\Odysseus\source\repos\RPGCharacters_Assignment\RPGCharacters\obj\Debug\net5.0\RPGCharacters.csproj.AssemblyReference.cache
