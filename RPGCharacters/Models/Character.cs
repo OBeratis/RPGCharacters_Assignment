@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RPGCharacters.Models
 {
-    public class Character : Hero
+    public class Character : Hero, ICalculatorTotal
     {
         // Fields
         private int damage;
@@ -155,6 +155,27 @@ namespace RPGCharacters.Models
             sb.AppendLine($"Damage: {this.Damage}");
 
             Console.WriteLine(sb.ToString());
+        }
+
+        public void CalculateTotalAttribute()
+        {
+            foreach (var item in Equipment)
+            {
+                if (item.Value is Armor)
+                {
+                    // Total attribute = attributes from level + attributes from all equipped armor
+                    TotalPrimaryAttributes += item.Value.RequiredLevel;
+                }
+                else if (item.Value is Weapon)
+                {
+                    // Character damage = Weapon DPS * (1+TotalPrimaryAttribute/100)
+                    Damage = item.Value.RequiredLevel * (1 + (TotalPrimaryAttributes / 100));
+                }
+                else
+                {
+                    throw new Exception("Something went wrong!");
+                }
+            }
         }
     }
 }

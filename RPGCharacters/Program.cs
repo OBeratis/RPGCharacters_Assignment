@@ -12,35 +12,35 @@ namespace RPGCharacters
     {
         static void Main(string[] args)
         {
-            //bool bThrowCustomException = true;
+            bool bThrowCustomException = true;
 
             // Weapon exception test
-            //try
-            //{
-            //    TestWeaponException(bThrowCustomException);
-            //}
-            //catch (InvalidWeaponException wex)
-            //{
-            //    Console.WriteLine($"Weapon exception: {wex.Message}");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"General weapon exception: {ex.Message}");
-            //}
+            try
+            {
+                TestWeaponException(bThrowCustomException);
+            }
+            catch (InvalidWeaponException wex)
+            {
+                Console.WriteLine($"Weapon exception: {wex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"General weapon exception: {ex.Message}");
+            }
 
             // Armor exception test
-            //try
-            //{
-            //    TestArmorException(bThrowCustomException);
-            //}
-            //catch (InvalidArmorException aex)
-            //{
-            //    Console.WriteLine($"Armor exception: {aex.Message}");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"General armor exception: {ex.Message}");
-            //}
+            try
+            {
+                TestArmorException(bThrowCustomException);
+            }
+            catch (InvalidArmorException aex)
+            {
+                Console.WriteLine($"Armor exception: {aex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"General armor exception: {ex.Message}");
+            }
 
             Character mage = new Character(CharacterClass.Mage);
             mage.DisplayCharacterStatistics();
