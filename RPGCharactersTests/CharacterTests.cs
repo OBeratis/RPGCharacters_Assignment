@@ -6,7 +6,7 @@ using RPGCharacters.Custom_Exceptions;
 
 namespace RPGCharactersTests
 {
-    public class RPGTests
+    public class CharacterTests
     {
         #region Creation
         [Fact]
@@ -41,18 +41,6 @@ namespace RPGCharactersTests
             // Arrange
             // Act and Assert
             Assert.ThrowsAsync<CharacterException>(() => throw new CharacterException(message));
-        }
-        #endregion
-
-        #region Item and Equipment
-        [Fact]
-        public void x_ShouldPass()
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
         }
         #endregion
     }

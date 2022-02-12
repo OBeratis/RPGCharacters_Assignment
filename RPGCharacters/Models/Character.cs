@@ -40,6 +40,25 @@ namespace RPGCharacters.Models
         public PrimaryAttributes PrimaryAttributes { get => primaryAttributes; set => primaryAttributes = value; }
         public override CharacterClass ClassType { get => classType; set => classType = value; }
 
+        // Overrided methods
+        public override void IncreaseLevel() { level++; }
+        public override void IncreasePrimaryAttributes() { basePrimaryAttributes++; }
+        public override void DisplayCharacterStatistics()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Character statistics");
+            sb.AppendLine("-----------------------");
+            sb.AppendLine($"Character name: {this.ClassType.ToString()}");
+            sb.AppendLine($"Character level: {this.Level}");
+            sb.AppendLine($"Strength: {this.PrimaryAttributes.Strength}");
+            sb.AppendLine($"Dexterity: {this.PrimaryAttributes.Dexterity}");
+            sb.AppendLine($"Intelligence: {this.PrimaryAttributes.Intelligence}");
+            sb.AppendLine($"Damage: {this.Damage}");
+
+            Console.WriteLine(sb.ToString());
+        }
+
+        // Methods
         private void InitializePrimaryAttributes()
         {
             PrimaryAttributes = new PrimaryAttributes();
@@ -69,7 +88,6 @@ namespace RPGCharacters.Models
                     break;
             }
         }
-
         public void Equip(Weapon weapon, Slot slot)
         {
             // prüfe level des characters -> ist dieser ausreichend? wenn nein -> exception
@@ -91,7 +109,6 @@ namespace RPGCharacters.Models
             // alle prüfungen überstanden? -> in das equipment eintragen 
             this.Equipment.Add(slot, weapon);
         }
-
         public void Equip(Armor armor, Slot slot)
         {
             if (armor.RequiredLevel <= this.Level)
@@ -107,12 +124,6 @@ namespace RPGCharacters.Models
             this.Equipment.Add(slot, armor);
         }
 
-
-        // Overrided methods
-        public override void IncreaseLevel() { level++; }
-        public override void IncreasePrimaryAttributes() { basePrimaryAttributes++; }
-
-        // Methods
         public void CalculateAttributes()
         {
             switch(this.ClassType)
@@ -142,21 +153,6 @@ namespace RPGCharacters.Models
             }
         }
 
-        public override void DisplayCharacterStatistics()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Character statistics");
-            sb.AppendLine("-----------------------");
-            sb.AppendLine($"Character name: {this.ClassType.ToString()}");
-            sb.AppendLine($"Character level: {this.Level}");
-            sb.AppendLine($"Strength: {this.PrimaryAttributes.Strength}");
-            sb.AppendLine($"Dexterity: {this.PrimaryAttributes.Dexterity}");
-            sb.AppendLine($"Intelligence: {this.PrimaryAttributes.Intelligence}");
-            sb.AppendLine($"Damage: {this.Damage}");
-
-            Console.WriteLine(sb.ToString());
-        }
-
         public void CalculateTotalAttribute()
         {
             foreach (var item in Equipment)
@@ -164,7 +160,8 @@ namespace RPGCharacters.Models
                 if (item.Value is Armor)
                 {
                     // Total attribute = attributes from level + attributes from all equipped armor
-                    TotalPrimaryAttributes += item.Value.RequiredLevel;
+                    TotalPrimaryAttributes = Level + 
+                        (PrimaryAttributes.Dexterity + PrimaryAttributes.Strength + PrimaryAttributes.Intelligence);
                 }
                 else if (item.Value is Weapon)
                 {
