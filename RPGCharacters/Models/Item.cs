@@ -10,13 +10,13 @@ namespace RPGCharacters.Models
     {
         protected string name = "";
         protected string equip = "";
-        protected int slot = 0;
+        protected Slot slot;
         protected int requiredLevel = 0;
 
         // Properties
         public abstract string Name { get; set; }
         public abstract string Equip { get; set; }
-        public abstract int Slot { get; set; }
+        public abstract Slot Slot { get; set; }
         public abstract int RequiredLevel { get; set; }
 
     }

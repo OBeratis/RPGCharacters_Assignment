@@ -11,32 +11,34 @@ namespace RPGCharacters.Models
     {
         private Weapons type;
         private int damage;
+        private WeaponAttributes weaponAttributes;
+        private double dps; //damagePerSecond
 
-        public Dictionary<Weapons, CharacterClass> usableBy = new Dictionary<Weapons, CharacterClass>() 
-        {  
-            { Weapons.Staffs, CharacterClass.Mage },
-            { Weapons.Wands, CharacterClass.Mage },
-            { Weapons.Bows, CharacterClass.Ranger },
-            { Weapons.Daggers, CharacterClass.Rogue },
-            { Weapons.Swords, CharacterClass.Rogue },
-            { Weapons.Swords, CharacterClass.Warrior },
-            { Weapons.Hammers, CharacterClass.Warrior },
-            { Weapons.Axes, CharacterClass.Warrior }
-        }; 
-
-        public Weapon(Weapons weapon)
+        public Weapon(Weapons weapon, WeaponAttributes weaponAttributes)
         {
             this.type = weapon;
+            this.Slot = Slot.Weapon;
+            this.weaponAttributes = weaponAttributes;
+            calculateDps();
         }
 
         // Properties
         public Weapons Type { get => type; set => type = value; }
         public int Damage { get => damage; set => damage = value; }
 
+        public double Dps { get => dps; set => dps = value; }
+
+        public WeaponAttributes WeaponAttributes { get => weaponAttributes; set => weaponAttributes = value; }
+
+        private void calculateDps()
+        {
+            Dps = weaponAttributes.damage * this.weaponAttributes.attackSpeed;
+        }
+
         // Overrided
         public override string Name { get => name; set => name = value; }
         public override string Equip { get => equip; set => equip = value; }
-        public override int Slot { get => slot; set => slot = value; }
+        public override Slot Slot { get => slot; set => slot = value; }
         public override int RequiredLevel { get => requiredLevel; set => requiredLevel = value; }
     }
 

@@ -42,14 +42,24 @@ namespace RPGCharacters
                 Console.WriteLine($"General armor exception: {ex.Message}");
             }
 
-            Character mage = new Character(CharacterClass.Mage);
+            Character mage = new Mage();
             mage.DisplayCharacterStatistics();
-            Character ranger = new Character(CharacterClass.Ranger);
+            Character ranger = new Ranger();
             ranger.DisplayCharacterStatistics();
-            Character rogue = new Character(CharacterClass.Rogue);
+            Character rogue = new Rogue();
             rogue.DisplayCharacterStatistics();
-            Character warrior = new Character(CharacterClass.Warrior);
+            Character warrior = new Warrior();
             warrior.DisplayCharacterStatistics();
+
+            // should throw exception
+            //WeaponAttributes attr = new WeaponAttributes() { damage = 12, attackSpeed = 0.8 };
+            //Weapon staff = new Weapon(Weapons.Staffs, attr);
+            //warrior.Equip(staff, Slot.Weapon);
+
+            WeaponAttributes attrAxe = new WeaponAttributes() { damage = 12, attackSpeed = 0.8 };
+            Weapon axe = new Weapon(Weapons.Axes, attrAxe);
+            axe.RequiredLevel = 2;
+            warrior.Equip(axe, Slot.Weapon);
 
             Console.WriteLine();
             

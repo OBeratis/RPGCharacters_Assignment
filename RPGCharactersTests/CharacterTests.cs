@@ -15,7 +15,7 @@ namespace RPGCharactersTests
             // Arrange
             int expected = 1;
             // Act
-            Character character = new Character();
+            Character character = new Mage();
             int actual = character.Level;
             // Assert
             Assert.Equal(expected, actual);
@@ -27,7 +27,7 @@ namespace RPGCharactersTests
             // Arrange
             int expected = 2;
             // Act
-            Character character = new Character();
+            Character character = new Mage();
             character.IncreaseLevel();
             int actual = character.Level;
             // Assert
@@ -43,7 +43,7 @@ namespace RPGCharactersTests
             int expectedDexterity = 1;
             int expectedIntelligence = 8;
             // Act
-            Character character = new Character(CharacterClass.Mage);
+            Character character = new Mage();
             int actualLevel = character.Level;
             int actualStrength = character.PrimaryAttributes.Strength;
             int actualDexterity = character.PrimaryAttributes.Dexterity;
@@ -64,7 +64,7 @@ namespace RPGCharactersTests
             int expectedDexterity = 7;
             int expectedIntelligence = 1;
             // Act
-            Character character = new Character(CharacterClass.Ranger);
+            Character character = new Ranger();
             int actualLevel = character.Level;
             int actualStrength = character.PrimaryAttributes.Strength;
             int actualDexterity = character.PrimaryAttributes.Dexterity;
@@ -85,7 +85,7 @@ namespace RPGCharactersTests
             int expectedDexterity = 6;
             int expectedIntelligence = 1;
             // Act
-            Character character = new Character(CharacterClass.Rogue);
+            Character character = new Rogue();
             int actualLevel = character.Level;
             int actualStrength = character.PrimaryAttributes.Strength;
             int actualDexterity = character.PrimaryAttributes.Dexterity;
@@ -106,7 +106,7 @@ namespace RPGCharactersTests
             int expectedDexterity = 2;
             int expectedIntelligence = 1;
             // Act
-            Character character = new Character(CharacterClass.Warrior);
+            Character character = new Warrior();
             int actualLevel = character.Level;
             int actualStrength = character.PrimaryAttributes.Strength;
             int actualDexterity = character.PrimaryAttributes.Dexterity;
@@ -127,7 +127,7 @@ namespace RPGCharactersTests
             int expectedDexterity = 2;
             int expectedIntelligence = 13;
             // Act
-            Character character = new Character(CharacterClass.Mage);
+            Character character = new Mage();
             character.LevelUp();
             int actualLevel = character.Level;
             int actualStrength = character.PrimaryAttributes.Strength;
@@ -149,7 +149,7 @@ namespace RPGCharactersTests
             int expectedDexterity = 12;
             int expectedIntelligence = 2;
             // Act
-            Character character = new Character(CharacterClass.Ranger);
+            Character character = new Ranger();
             character.LevelUp();
             int actualLevel = character.Level;
             int actualStrength = character.PrimaryAttributes.Strength;
@@ -171,7 +171,7 @@ namespace RPGCharactersTests
             int expectedDexterity = 10;
             int expectedIntelligence = 2;
             // Act
-            Character character = new Character(CharacterClass.Rogue);
+            Character character = new Rogue();
             character.LevelUp();
             int actualLevel = character.Level;
             int actualStrength = character.PrimaryAttributes.Strength;
@@ -193,7 +193,7 @@ namespace RPGCharactersTests
             int expectedDexterity = 4;
             int expectedIntelligence = 2;
             // Act
-            Character character = new Character(CharacterClass.Warrior);
+            Character character = new Warrior();
             character.LevelUp();
             int actualLevel = character.Level;
             int actualStrength = character.PrimaryAttributes.Strength;
