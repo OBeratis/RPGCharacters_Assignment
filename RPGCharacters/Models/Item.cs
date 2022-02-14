@@ -8,6 +8,7 @@ namespace RPGCharacters.Models
 {
     public abstract class Item
     {
+        // Fields
         protected string name = "";
         protected string equip = "";
         protected Slot slot;

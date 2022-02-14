@@ -6,14 +6,9 @@ using System.Threading.Tasks;
 
 namespace RPGCharacters.Models
 {
-    /// <summary>
-    /// Character/Hero base class
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
     public abstract class Hero
     {
+        // Fields
         protected CharacterClass classType;
         protected string name = "";
         protected int level = 1;

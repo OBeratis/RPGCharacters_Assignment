@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace RPGCharacters.Models
 {
-   
     public class PrimaryAttributes
     {
         // Fields

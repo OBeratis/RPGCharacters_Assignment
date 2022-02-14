@@ -28,13 +28,23 @@ namespace RPGCharacters.Models
         public Dictionary<Slot, Item> Equipment { get => equipment; set => equipment = value; }
         public PrimaryAttributes PrimaryAttributes { get => primaryAttributes; set => primaryAttributes = value; }
         public override CharacterClass ClassType { get => classType; set => classType = value; }
-
         protected abstract void InitializePrimaryAttributes();
 
         // Methods
+
+        /// <summary>
+        /// Increase level of a character by 1.
+        /// </summary>
         public override void IncreaseLevel() { Level++; }
+
+        /// <summary>
+        /// Increase base primary attributes of each character by 1.
+        /// </summary>
         public override void IncreasePrimaryAttributes() { basePrimaryAttributes++; }
 
+        /// <summary>
+        /// Display statistics to a character sheet to console.
+        /// </summary>
         public override void DisplayCharacterStatistics()
         {
             StringBuilder sb = new StringBuilder();
@@ -50,6 +60,13 @@ namespace RPGCharacters.Models
             Console.WriteLine(sb.ToString());
         }
 
+        /// <summary>
+        /// Adds a new weapon to the equipment in the available slot.
+        /// </summary>
+        /// <param name="weapon">Item that is added to the equipment.</param>
+        /// <param name="slot">The slot the item was added into.</param>
+        /// <exception cref="InvalidWeaponException"></exception>
+        /// <exception cref="InvalidWeaponException">When the weapon check is not passed.</exception>
         public void Equip(Weapon weapon, Slot slot)
         {
             // prüfe level des characters -> ist dieser ausreichend? wenn nein -> exception
@@ -74,6 +91,13 @@ namespace RPGCharacters.Models
             // alle prüfungen überstanden? -> in das equipment eintragen 
             this.Equipment.Add(slot, weapon);
         }
+
+        /// <summary>
+        /// Add a new armor to the equipment in the available slot.
+        /// </summary>
+        /// <param name="armor">Item that is added to the equipment.</param>
+        /// <param name="slot">The slot the item was added into.</param>
+        /// <exception cref="InvalidArmorException">When the armor check is not passed.</exception>
         public void Equip(Armor armor, Slot slot)
         {
             if (armor.RequiredLevel > this.Level)
@@ -95,18 +119,27 @@ namespace RPGCharacters.Models
             this.Equipment.Add(slot, armor);
         }
 
+        /// <summary>
+        /// Calculate the base and total primary attributes for each equipped item.
+        /// </summary>
         public void CalculateTotalAttribute()
         {
+            // Loop through all equipments
             foreach (var item in Equipment)
             {
+                // Is this item value class type of armor
+                // then calculate all attributes from equipped armor and store into total primary attributes
                 if (item.Value is Armor)
                 {
                     // Total attribute = attributes from level + attributes from all equipped armor
-                    TotalPrimaryAttributes = Level + ((Armor) item.Value).PrimaryAttributes.Strength + ((Armor)item.Value).PrimaryAttributes.Dexterity + ((Armor)item.Value).PrimaryAttributes.Intelligence;
+                    TotalPrimaryAttributes = Level + 
+                        ((Armor) item.Value).PrimaryAttributes.Strength + ((Armor)item.Value).PrimaryAttributes.Dexterity + ((Armor)item.Value).PrimaryAttributes.Intelligence;
                 }
+                // Is this item value class type of weapon
+                // then calculate the character damage
                 else if (item.Value is Weapon)
                 {
-                    // Character damage = Weapon DPS * (1+TotalPrimaryAttribute/100)
+                    // Character damage = Weapon DPS * ( 1 + TotalPrimaryAttribute / 100)
                     Damage = ((Weapon)item.Value).Dps * (1 + (TotalPrimaryAttributes / 100));
                 }
             }

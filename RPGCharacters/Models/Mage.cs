@@ -10,12 +10,20 @@ namespace RPGCharacters.Models
     {
         public Mage()
         {
+            // Set characters classs type
             classType = CharacterClass.Mage;
+
+            // Initialize with default values
             InitializePrimaryAttributes();
+
+            // Assign to shich weapons and armor a mage can have
             UsableWeapons = new List<Weapons> { Weapons.Staffs, Weapons.Wands };
             UsableArmor = new List<Armors> { Armors.Cloth };
         }
 
+        /// <summary>
+        /// Initialize characters attributes when the mage class is created.
+        /// </summary>
         protected override void InitializePrimaryAttributes()
         {
             PrimaryAttributes = new PrimaryAttributes();
@@ -24,9 +32,15 @@ namespace RPGCharacters.Models
             PrimaryAttributes.Intelligence = 8;
         }
 
+        /// <summary>
+        /// Instantiate character when level up required.
+        /// </summary>
         public override void LevelUp()
         {
+            // Increase level of character
             IncreaseLevel();
+
+            // Increase attributes with values of the mage
             PrimaryAttributes.Strength += 1;
             PrimaryAttributes.Dexterity += 1;
             PrimaryAttributes.Intelligence += 5;
