@@ -45,5 +45,12 @@ namespace RPGCharacters.Models
             PrimaryAttributes.Dexterity += 4;
             PrimaryAttributes.Intelligence += 1;
         }
+
+        protected override double GetBaseTotalAttribute()
+        {
+            TotalPrimaryAttributes = PrimaryAttributes.Dexterity;
+
+            return TotalPrimaryAttributes;
+        }
     }
 }

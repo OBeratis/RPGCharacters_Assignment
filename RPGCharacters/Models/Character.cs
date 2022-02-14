@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RPGCharacters.Models
 {
-    public abstract class Character : Hero, ICalculatorTotal
+    public abstract class Character : Hero
     {
         // Fields
         private double damage = 1.0;
@@ -29,11 +29,40 @@ namespace RPGCharacters.Models
 
         public List<Weapons> UsableWeapons { get => usableWeapons; set => usableWeapons = value; }
         public List<Armors> UsableArmor { get => usableArmor; set => usableArmor = value; }
-        public double Damage { get => damage; set => damage = value; }
+        public double Damage { 
+            get
+            {
+                double dps = 1.0;
+                double characterAttributes = this.GetBaseTotalAttribute();
+
+                if (Equipment.Count > 0)
+                {
+                    foreach (var item in Equipment)
+                    {
+                        if (item.Value is Armor)
+                        {
+                            TotalPrimaryAttributes = Level +
+                            ((Armor)item.Value).PrimaryAttributes.Strength + ((Armor)item.Value).PrimaryAttributes.Dexterity + ((Armor)item.Value).PrimaryAttributes.Intelligence;
+                        }
+                        else if (item.Value is Weapon)
+                        {
+                            dps = ((Weapon)item.Value).Dps;
+                        }
+                    }
+
+                    damage = (characterAttributes + dps ) * (1 + (TotalPrimaryAttributes / 100));
+                    return damage;
+                }
+                
+                damage = Level * (1 + (characterAttributes / 100));
+                return damage;
+            }
+        }
         public Dictionary<Slot, Item> Equipment { get => equipment; set => equipment = value; }
         public PrimaryAttributes PrimaryAttributes { get => primaryAttributes; set => primaryAttributes = value; }
         public override CharacterClass ClassType { get => classType; set => classType = value; }
         protected abstract void InitializePrimaryAttributes();
+        protected abstract Double GetBaseTotalAttribute();
 
         // Methods
 
@@ -127,6 +156,7 @@ namespace RPGCharacters.Models
         /// <summary>
         /// Calculate the base and total primary attributes for each equipped item.
         /// </summary>
+        /*
         public void CalculateTotalAttribute()
         {
             // Loop through all equipments
@@ -134,6 +164,7 @@ namespace RPGCharacters.Models
             {
                 // Is this item value class type of armor
                 // then calculate all attributes from equipped armor and store into total primary attributes
+                // if (item.GetType().Name == "Armor")
                 if (item.Value is Armor)
                 {
                     // Total attribute = attributes from level + attributes from all equipped armor
@@ -142,6 +173,7 @@ namespace RPGCharacters.Models
                 }
                 // Is this item value class type of weapon
                 // then calculate the character damage
+                // else if (item.GetType().Name == "Weapon")
                 else if (item.Value is Weapon)
                 {
                     // Character damage = Weapon DPS * ( 1 + TotalPrimaryAttribute / 100)
@@ -149,5 +181,8 @@ namespace RPGCharacters.Models
                 }
             }
         }
+        */
+
+
     }
 }
