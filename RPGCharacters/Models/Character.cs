@@ -35,14 +35,21 @@ namespace RPGCharacters.Models
                 double dps = 1.0;
                 double characterAttributes = this.GetBaseTotalAttribute();
 
-                if (Equipment.Count > 0)
+                if (Equipment.Count == 0)
+                {
+                    damage = Level * (1 + (characterAttributes / 100));
+                    return damage;
+                }
+
+                if (Equipment.Any(a => a.Value is Armor))
                 {
                     foreach (var item in Equipment)
                     {
                         if (item.Value is Armor)
                         {
-                            TotalPrimaryAttributes = Level +
-                            ((Armor)item.Value).PrimaryAttributes.Strength + ((Armor)item.Value).PrimaryAttributes.Dexterity + ((Armor)item.Value).PrimaryAttributes.Intelligence;
+                            TotalPrimaryAttributes = ((Armor)item.Value).PrimaryAttributes.Strength + 
+                                ((Armor)item.Value).PrimaryAttributes.Dexterity + 
+                                ((Armor)item.Value).PrimaryAttributes.Intelligence;
                         }
                         else if (item.Value is Weapon)
                         {
@@ -50,12 +57,22 @@ namespace RPGCharacters.Models
                         }
                     }
 
-                    damage = (characterAttributes + dps ) * (1 + (TotalPrimaryAttributes / 100));
+                    damage = dps * (Level + ((characterAttributes + TotalPrimaryAttributes) / 100));
                     return damage;
                 }
-                
-                damage = Level * (1 + (characterAttributes / 100));
-                return damage;
+                else
+                {
+                    foreach (var item in Equipment)
+                    {
+                        if (item.Value is Weapon)
+                        {
+                            dps = ((Weapon)item.Value).Dps;
+                        }
+                    }
+
+                    damage = dps * (Level + ((characterAttributes) / 100));
+                    return damage;
+                }
             }
         }
         public Dictionary<Slot, Item> Equipment { get => equipment; set => equipment = value; }

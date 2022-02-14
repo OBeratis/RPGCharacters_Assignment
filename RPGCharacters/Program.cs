@@ -140,7 +140,7 @@ namespace RPGCharacters
             }
 
             warrior = new Warrior();
-            weaponAttr = new WeaponAttributes() { attackSpeed = 1.1, damage = 1 };
+            weaponAttr = new WeaponAttributes() { attackSpeed = 1.1, damage = 7 };
             weapon = new Weapon(Weapons.Axes, weaponAttr);
             try
             {
@@ -155,7 +155,7 @@ namespace RPGCharacters
             }
 
             warrior = new Warrior();
-            weaponAttr = new WeaponAttributes() { attackSpeed = 1.1, damage = 1 };
+            weaponAttr = new WeaponAttributes() { attackSpeed = 1.1, damage = 7 };
             weapon = new Weapon(Weapons.Axes, weaponAttr);
             primaryAttr = new PrimaryAttributes() { Intelligence = 1 };
             armor = new Armor(Armors.Plate, primaryAttr);

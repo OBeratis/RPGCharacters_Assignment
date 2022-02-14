@@ -13,7 +13,6 @@ namespace RPGCharacters.Models
         private Weapons type;
         private int damage;
         private WeaponAttributes weaponAttributes;
-        private double dps; //damagePerSecond
 
         // Contructor
         public Weapon(Weapons weapon, WeaponAttributes weaponAttributes)
@@ -27,7 +26,12 @@ namespace RPGCharacters.Models
         // Properties
         public Weapons Type { get => type; set => type = value; }
         public int Damage { get => damage; set => damage = value; }
-        public double Dps { get => dps; set => dps = value; }
+        // public double Dps { get => dps; set => dps = value; }
+        public double Dps {
+            get {  
+                return CalculateDps(); 
+            }
+        }
         public WeaponAttributes WeaponAttributes { get => weaponAttributes; set => weaponAttributes = value; }
         public override string Name { get => name; set => name = value; }
         public override string Equip { get => equip; set => equip = value; }
@@ -37,9 +41,9 @@ namespace RPGCharacters.Models
         /// <summary>
         /// Calculate weapons damage per second (DPS)
         /// </summary>
-        private void CalculateDps()
+        private double CalculateDps()
         {
-            Dps = weaponAttributes.damage * this.weaponAttributes.attackSpeed;
+            return weaponAttributes.damage * this.weaponAttributes.attackSpeed;
         }
 
     }
