@@ -107,7 +107,7 @@ namespace RPGCharactersTests
             // Arrange
             double expected = 0.0;
             Character warrior = new Warrior();
-            WeaponAttributes weaponAttr = new WeaponAttributes() { attackSpeed = 1.1, damage = 1 };
+            WeaponAttributes weaponAttr = new WeaponAttributes() { attackSpeed = 1.1, damage = 7 };
             Weapon weapon = new Weapon(Weapons.Axes, weaponAttr);
             // Act
             warrior.Equip(weapon, Slot.Weapon);
@@ -122,7 +122,7 @@ namespace RPGCharactersTests
             // Arrange
             double expected = 0.0;
             Character warrior = new Warrior();
-            WeaponAttributes weaponAttr = new WeaponAttributes() { attackSpeed = 1.1, damage = 1 };
+            WeaponAttributes weaponAttr = new WeaponAttributes() { attackSpeed = 1.1, damage = 7 };
             Weapon weapon = new Weapon(Weapons.Axes, weaponAttr);
             PrimaryAttributes primaryAttr = new PrimaryAttributes() { Intelligence = 1 };
             Armor armor = new Armor(Armors.Plate, primaryAttr);
