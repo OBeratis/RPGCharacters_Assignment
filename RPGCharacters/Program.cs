@@ -131,7 +131,8 @@ namespace RPGCharacters
             try
             {
                 var damage = warrior.Damage;
-                Console.WriteLine($"Test 7: ???");
+                Console.WriteLine($"Test 7: should return 1.05");
+                Console.WriteLine($"Test 7: damage");
             }
             catch 
             {
@@ -145,6 +146,7 @@ namespace RPGCharacters
             {
                 warrior.Equip(weapon, Slot.Weapon);
                 var damage = warrior.Damage;
+                Console.WriteLine($"Test 8: should return 8.085");
                 Console.WriteLine($"Test 8: {damage}");
             }
             catch (InvalidWeaponException wex)
@@ -163,6 +165,7 @@ namespace RPGCharacters
                 warrior.Equip(weapon, Slot.Weapon);
                 warrior.Equip(armor, Slot.Body);
                 var damage = warrior.Damage;
+                Console.WriteLine($"Test 9: should return 8.162");
                 Console.WriteLine($"Test 9: {damage}");
             }
             catch (InvalidWeaponException wex)
