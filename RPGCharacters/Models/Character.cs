@@ -37,7 +37,7 @@ namespace RPGCharacters.Models
 
                 if (Equipment.Count == 0)
                 {
-                    damage = Level * (1 + (characterAttributes / 100));
+                    damage = dps * (Level + (characterAttributes / 100));
                     return damage;
                 }
 
