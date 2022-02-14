@@ -16,6 +16,11 @@ namespace RPGCharacters.Models
         private List<Weapons> usableWeapons;
         private List<Armors> usableArmor;
 
+        protected Character()
+        {
+            this.Equipment = new Dictionary<Slot, Item>();
+        }
+
         // Properties
         public override string Name { get => name; set => name = value; }
         public override int Level { get => level; set => level = value; }
