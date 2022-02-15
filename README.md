@@ -18,7 +18,7 @@ Run console application RPGCharacters
 
 or 
 
-Run unix tests RPGCharactersTests
+Run unit tests RPGCharactersTests
 
 
 # Maintainers
