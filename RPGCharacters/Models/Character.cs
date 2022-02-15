@@ -118,29 +118,31 @@ namespace RPGCharacters.Models
         /// <param name="slot">The slot the item was added into.</param>
         /// <exception cref="InvalidWeaponException"></exception>
         /// <exception cref="InvalidWeaponException">When the weapon check is not passed.</exception>
-        public void Equip(Weapon weapon, Slot slot)
+        public string Equip(Weapon weapon, Slot slot)
         {
             // prüfe level des characters -> ist dieser ausreichend? wenn nein -> exception
-            // weapon.requiredLevel <= this.Level?
+            // weapon.requiredLevel > this.Level?
             if (weapon.RequiredLevel > this.Level)
             {
-                throw new InvalidWeaponException();
+                throw new InvalidWeaponException("Character tries to equip a high level weapon.");
             }
 
             // prüfe Klasse des characters -> ist diese erlaubt für den waffentyp? wenn nein -> exception
             if (!this.usableWeapons.Contains(weapon.Type))
             {
-                throw new InvalidWeaponException();
+                throw new InvalidWeaponException("Character tries to equip a wrong weapon type.");
             }
 
             // throw exception -> ich kann eine Waffe nicht in einem nicht-waffen slot ausrüsten
             if (slot != Slot.Weapon)
             {
-                throw new InvalidWeaponException();
+                throw new InvalidWeaponException("Weapon can only equipped in a weapon slot.");
             }
 
             // alle prüfungen überstanden? -> in das equipment eintragen 
             this.Equipment.Add(slot, weapon);
+
+            return "New weapon equipped!";
         }
 
         /// <summary>
@@ -149,57 +151,27 @@ namespace RPGCharacters.Models
         /// <param name="armor">Item that is added to the equipment.</param>
         /// <param name="slot">The slot the item was added into.</param>
         /// <exception cref="InvalidArmorException">When the armor check is not passed.</exception>
-        public void Equip(Armor armor, Slot slot)
+        public string Equip(Armor armor, Slot slot)
         {
             if (armor.RequiredLevel > this.Level)
             {
-                throw new InvalidArmorException();
+                throw new InvalidArmorException("Character tries to equip a high level armor.");
             }
 
             if (!this.usableArmor.Contains(armor.Type))
             {
-                throw new InvalidArmorException();
+                throw new InvalidArmorException("Character tries to equip a wrong armor type.");
             }
 
             // throw exception -> ich kann eine rüstung nicht in einem waffen slot ausrüsten
             if (slot == Slot.Weapon)
             {
-                throw new InvalidArmorException();
+                throw new InvalidArmorException("Armor can only equipped in an non-weapon slot.");
             }
 
             this.Equipment.Add(slot, armor);
+
+            return "New armour equipped!";
         }
-
-        /// <summary>
-        /// Calculate the base and total primary attributes for each equipped item.
-        /// </summary>
-        /*
-        public void CalculateTotalAttribute()
-        {
-            // Loop through all equipments
-            foreach (var item in Equipment)
-            {
-                // Is this item value class type of armor
-                // then calculate all attributes from equipped armor and store into total primary attributes
-                // if (item.GetType().Name == "Armor")
-                if (item.Value is Armor)
-                {
-                    // Total attribute = attributes from level + attributes from all equipped armor
-                    TotalPrimaryAttributes = Level + 
-                        ((Armor) item.Value).PrimaryAttributes.Strength + ((Armor)item.Value).PrimaryAttributes.Dexterity + ((Armor)item.Value).PrimaryAttributes.Intelligence;
-                }
-                // Is this item value class type of weapon
-                // then calculate the character damage
-                // else if (item.GetType().Name == "Weapon")
-                else if (item.Value is Weapon)
-                {
-                    // Character damage = Weapon DPS * ( 1 + TotalPrimaryAttribute / 100)
-                    Damage = ((Weapon)item.Value).Dps * (1 + (TotalPrimaryAttributes / 100));
-                }
-            }
-        }
-        */
-
-
     }
 }

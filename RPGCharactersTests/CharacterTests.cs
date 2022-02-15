@@ -205,15 +205,6 @@ namespace RPGCharactersTests
             Assert.Equal(expectedDexterity, actualDexterity);
             Assert.Equal(expectedIntelligence, actualIntelligence);
         }
-
-        [Theory]
-        [InlineData("Test")]
-        public void Character_Invalid_ShouldThrowCharacterException(string message)
-        {
-            // Arrange
-            // Act and Assert
-            Assert.ThrowsAsync<CharacterException>(() => throw new CharacterException(message));
-        }
         #endregion
     }
 }
