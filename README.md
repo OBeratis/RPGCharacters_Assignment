@@ -5,21 +5,21 @@ RPG Characters is a console application in C# for education purposes
 - uses Visual Studio 2019 with .NET 5
 - uses xUnit for Testing
 
-https://github.com/OBeratis/RPGCharacters_Assignment
-
 
 # Install
 
-Download in users default folder (e.g. %USERPROFILE%).
+Clone the application under https://github.com/OBeratis/RPGCharacters_Assignment
 
 # Usage
 
-Use [Command Prompt]
-%USERPROFILE%\RPGCharacters_Assignment\RPGCharacters\bin\Debug\net5.0\RPGCharacters.exe to call the application.
+Start Visual Studio 2019 or higher
 
-or
+Run console application RPGCharacters
 
-in Visual Studio run unit tests RPGCharactersTests
+or 
+
+Run unix tests RPGCharactersTests
+
 
 # Maintainers
 
