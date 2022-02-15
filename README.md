@@ -8,7 +8,7 @@ RPG Characters is a console application in C# for education purposes
 
 # Install
 
-Clone the application under https://github.com/OBeratis/RPGCharacters_Assignment
+Clone the application provided under https://github.com/OBeratis/RPGCharacters_Assignment
 
 # Usage
 
