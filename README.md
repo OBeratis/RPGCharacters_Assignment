@@ -7,7 +7,6 @@ RPG Characters is a console application in C# for education purposes
 
 https://github.com/OBeratis/RPGCharacters_Assignment
 
-The application  
 
 # Install
 
@@ -17,7 +16,9 @@ Download in users default folder (e.g. %USERPROFILE%).
 
 Use [Command Prompt]
 %USERPROFILE%\RPGCharacters_Assignment\RPGCharacters\bin\Debug\net5.0\RPGCharacters.exe to call the application.
+
 or
+
 in Visual Studio run unit tests RPGCharactersTests
 
 # Maintainers
