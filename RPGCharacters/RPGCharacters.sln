@@ -5,7 +5,12 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPGCharacters", "RPGCharacters.csproj", "{389BBD27-4EBC-433D-BADE-A43946C2C140}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGCharactersTests", "..\RPGCharactersTests\RPGCharactersTests.csproj", "{E89BF3CB-FDEF-4237-AEA5-DB62AC95360D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPGCharactersTests", "..\RPGCharactersTests\RPGCharactersTests.csproj", "{E89BF3CB-FDEF-4237-AEA5-DB62AC95360D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1F14B91F-3ABB-45F8-81E0-669CF32CE9E6}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -43,13 +43,13 @@ namespace RPGCharacters
             }
 
             Character mage = new Mage();
-            // mage.DisplayCharacterStatistics();
+            mage.DisplayCharacterStatistics();
             Character ranger = new Ranger();
-            // ranger.DisplayCharacterStatistics();
+            ranger.DisplayCharacterStatistics();
             Character rogue = new Rogue();
-            // rogue.DisplayCharacterStatistics();
+            rogue.DisplayCharacterStatistics();
             Character warrior = new Warrior();
-            // warrior.DisplayCharacterStatistics();
+            warrior.DisplayCharacterStatistics();
             Console.WriteLine();
 
             // should throw exception
